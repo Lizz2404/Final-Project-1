@@ -196,24 +196,67 @@
       </div>
     </div>
     
-    <!-- Birthday Section 
+  	<!-- Birthday Section--
 
-		Code copied from: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_date
-		Author: w3schools.com
-		Name: HTML <input type="date">
-		Description: Describes how to create date selection field.
+    Code copied from: https://www.w3schools.com/js/js_validation.asp
+    Author: w3schools.com
+    Name: JavaScript Forms
+    Description: Describes how to create forms in html
+    Date retrieved: Dec. 09, 2023
+    
+    Code copied from: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
+    Author: Mozila
+    Description: How to create date entry field within a form
+    Date retrieved: Dec 09, 2023
+
+    Code copied from: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+		Author: mozilla
+		Name: Document: getElementById() method
+		Description: Describes how to pull html objects from html into javascript
 		Date retrieved: Dec. 09, 2023
+
+    Code copied from: https://stackoverflow.com/questions/23733421/how-to-calculate-date-difference-between-two-text-inputs
+    Author: Stack overflow
+    Description: How to calculate date difference between two text inputs?
+    Date retrieved: Dec. 09, 2023
+
+    Code copied from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round
+    Author: Mozilla
+    Description: Math.round()
+    Date retreieved: Dec 09 2023
+
+    Code copied from: https://www.w3schools.com/jsref/prop_node_innertext.asp
+    Author: w3schools
+    Description: How to retrieve/set inner text of html elements in javascript
+    Date retrieved: Dec 09 2023
 		-->    
+
+
     <div id="section1" class="section">
       <h2 class="header">Birthday</h2>
       <div class="section-container">
         <div class="content">
-          <form action="/action_page.php">
-            <label for="birthday">Birthday:</label>
-            <input type="date" id="their-birthday" name="birthday">
-            <input type="submit" id="birthday-button">
+          <form id="dateForm">
+            <label for="inputDate">Enter a date:</label>
+            <input type="date" id="inputDate" name="inputDate">
+            <button type="submit">Submit</button>
           </form>
-          <p id="log"></p>
+      
+          <p id="result"></p>
+          
+          <script>
+            document.getElementById("dateForm").addEventListener("submit", function(event) {
+                event.preventDefault(); 
+
+                let input_date = new Date(document.getElementById("inputDate").value);
+                let my_birthday = new Date("2004-12-23");
+
+                let difference = input_date.getTime() - my_birthday.getTime();
+                let difference_in_days = difference / (24*3600*1000);
+
+                document.getElementById("result").innerText = `The difference in our birthdays is: ${Math.abs(Math.round(difference_in_days))} days; I was born on December 23, 2004.`;
+            });
+          </script>
         </div>
       </div>
     </div>
