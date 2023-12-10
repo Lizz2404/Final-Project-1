@@ -299,8 +299,8 @@
         <div class="section-container">
           <p>Welcome to my sketchbook! As mentioned before I love to draw! Infact, I probably have just over 20 different sketches back at home. Although I would love to show them all and my artistic journey through the ages, it would take far too long. This however, is my most recent sketchbook I’m about to finish. I started this sketch book on Monday July 4th 2022. That is not how quickly I usually complete my sketchbooks, but that is what university does to you. I experimented a lot with oil pastels in this sketchbook. I had a lot of fun layering and scratching away at them to create this amazing texture you see on the faces and in the background. I can easily say I like them far more then chalk pastels. Feel free to click on the buttons to change the different views of my sketchbook.</p>
         </div>
-        <button class="btn" onclick="one()">1</button>
-        <button class="btn active" onclick="two()">2</button>
+        <button class="btn active" onclick="one()">1</button>
+        <button class="btn" onclick="two()">2</button>
       </div>
       <div class="section-container">
         <!-- Header -->
@@ -313,6 +313,8 @@
               <img src="IMG_0427.jpeg" alt="art3" style="width:100%">
               <img src="IMG_0432.jpeg" alt="art4" style="width:100%">
               <img src="IMG_0431.jpeg" alt="art5" style="width:100%">
+              <img src="IMG_0487.jpeg" alt="art5" style="width:100%">
+              <img src="IMG_0485.jpeg" alt="art5" style="width:100%">
             </div>
             <!--Second Column-->
             <div class="column">
@@ -320,6 +322,9 @@
               <img src="IMG_0472.jpeg" alt="art7" style="width:100%">
               <img src="IMG_0473.jpeg" alt="art8" style="width:100%">
               <img src="IMG_0475.jpeg" alt="art9" style="width:100%">
+              <img src="IMG_0490.jpeg" alt="art9" style="width:100%">
+              <img src="IMG_0489.jpeg" alt="art9" style="width:100%">
+              <img src="IMG_0488.jpeg" alt="art9" style="width:100%">
             </div>
           </div>
         </div>
@@ -336,16 +341,15 @@
       // Full-width images
       function one() {
         for (i = 0; i < elements.length; i++) {
-          elements[i].style.msFlex = "100%"; // IE10
+          elements[i].style.msFlex = "100%";
           elements[i].style.flex = "100%";
         }
       }
 
-  
       // Two images side by side
       function two() {
         for (i = 0; i < elements.length; i++) {
-          elements[i].style.msFlex = "25%"; // IE10
+          elements[i].style.msFlex = "25%";
           elements[i].style.flex = "25%";
         }
       }
@@ -360,7 +364,11 @@
           this.className += " active";
         });
       }
+
+      //Set intial layout
+      one();
     </script>
+
 
     <!-- Education Section -->
     <div id="section3" class="section">
