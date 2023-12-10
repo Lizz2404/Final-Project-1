@@ -142,6 +142,33 @@
         margin-bottom: 10px;
       }
     </style>
+    
+    <!-- Birthday Section 
+    https://stackoverflow.com/questions/33659508/javascript-get-a-date-from-an-html-input
+		https://www.w3schools.com/js/js_whereto.asp
+    https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
+    -->    
+		<script>
+      function logSubmit() {
+        //log.textContent = `Form Submitted! Timestamp: ${event.timeStamp}`;
+        //event.preventDefault();
+        let date = document.getElementById("their-birthday");
+      	console.log(date)
+      }
+
+      const form = document.getElementById("form");
+      //const log = document.getElementById("log");
+      form.addEventListener("submit", logSubmit);
+      
+      
+    	//document.getElementById("birthday-input").addEventListener("change", function() {
+      //  let diff = Math.abs(date1 - date2);
+      //  console.log(input); //e.g. 2015-11-13
+      //  console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+			//});
+    </script>
+  
+  
   </head>
   <body>
 
@@ -183,9 +210,10 @@
         <div class="content">
           <form action="/action_page.php">
             <label for="birthday">Birthday:</label>
-            <input type="date" id="birthday" name="birthday">
-            <input type="submit">
+            <input type="date" id="their-birthday" name="birthday">
+            <input type="submit" id="birthday-button">
           </form>
+          <p id="log"></p>
         </div>
       </div>
     </div>
