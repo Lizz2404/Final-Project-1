@@ -62,6 +62,10 @@
         margin-top: 10px;
         text-align: center;
       }
+      
+      .content {
+        text-align: center;
+      }
 
       .section-container {
         display: flex;
@@ -99,12 +103,18 @@
         position: relative;
         text-align: center;
       }
-
-      .footer-email:hover {
-        text-decoration: underline;
-        text-align: center;
+    
+      
+      .hover-link {
         color: white;
+        text-decoration: none;
       }
+      .hover-link:hover {
+        text-decoration: underline;
+      }
+
+
+
       
 
       .image-container {
@@ -137,9 +147,10 @@
 
     <div class="navbar">
       <a href="#section0">About</a>
-      <a href="#section1">Sketchbook</a>
-      <a href="#section2">Education</a>
-      <a href="#section3">HTML</a>
+      <a href="#section1">Birthday</a>
+      <a href="#section2">Sketchbook</a>
+      <a href="#section3">Education</a>
+      <a href="#section4">HTML</a>
     </div>
 
     <div class="banner"></div>
@@ -157,9 +168,32 @@
         </div>
       </div>
     </div>
+    
+    <!-- Birthday Section 
 
-    <!-- Art Section -->
+		Code copied from: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_date
+		Author: w3schools.com
+		Name: HTML <input type="date">
+		Description: Describes how to create date selection field.
+		Date retrieved: Dec. 09, 2023
+		-->    
     <div id="section1" class="section">
+      <h2 class="header">Birthday</h2>
+      <div class="section-container">
+        <div class="content">
+          <form action="/action_page.php">
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday">
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <!-- Art Section -->
+    <div id="section2" class="section">
       <h2 class="header">Sketchbook</h2>
       <div class="section-container">
         <div class="image-container">
@@ -178,7 +212,7 @@
     </div>
 
     <!-- Education Section -->
-    <div id="section2" class="section">
+    <div id="section3" class="section">
       <h2 class="header">Education</h2>
       <div class="section-container">
         <div class="image-container">
@@ -188,7 +222,7 @@
     </div>
 
     <!-- Aspirations Section -->
-    <div id="section3" class="section">
+    <div id="section4" class="section">
       <h2 class="header">HTML</h2>
       <div class="section-container">
         The page should include a small table describing some types of information using HTML
@@ -197,8 +231,8 @@
 
     <footer>
       Get in Contact
-      <p><a href="mailto:ecgreen@uwaterloo.ca"> ecgreen@uwaterloo.ca</a></p>
-      <p><a href="https://www.linkedin.com/in/elizabeth-green-51474a1a4/"> Linkedin </a></p>
+      <p class="hover-link"><a href="mailto:ecgreen@uwaterloo.ca" class="hover-link" target="_blank"> ecgreen@uwaterloo.ca</a></p>
+      <p><a href="https://www.linkedin.com/in/elizabeth-green-51474a1a4/" class="hover-link" target="_blank"> Linkedin </a></p>
       <p> 289-935-2969</p>
     </footer>
 
