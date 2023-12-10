@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      
       body {
         font-family: Garamond;
         font-size: 18px;
@@ -62,7 +61,7 @@
         margin-top: 10px;
         text-align: center;
       }
-      
+
       .content {
         text-align: center;
       }
@@ -70,18 +69,24 @@
       .section-container {
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
-        background-color: palegoldenrod;
+        background-color: lightyellow;
         overflow: hidden;
         padding: 20px;
-        max-width: 90%;
+        max-width: 100%;
+      }
+
+      .content,
+      .image-content {
+        width: 100%;
       }
 
       .section-container img {
-        width: 400px;
-        height: 400px;
+        width: 200px;
+        height: auto;
         margin-left: 20px;
+        margin-top: 10px;
       }
 
       .title {
@@ -93,7 +98,7 @@
         margin: 0;
         padding: 7px;
         text-align: left;
-        width: 400px;
+
       }
 
       footer {
@@ -103,72 +108,91 @@
         position: relative;
         text-align: center;
       }
-    
-      
+
+
       .hover-link {
         color: white;
         text-decoration: none;
       }
+
       .hover-link:hover {
         text-decoration: underline;
       }
 
+      .row {
+        /* IE 10 */
+        display: flex;
+        -ms-flex-wrap: wrap;
+        /* IE 10 */
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
 
+      /* Create two equal columns that sits next to each other */
+      .column {
+        -ms-flex: 50%;
+        /* IE 10 */
+        flex: 50%;
+        padding: 0 4px;
+      }
 
-      
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+      }
 
-      .image-container {
-        align-items: center;
+      /* Style the buttons */
+      .btn {
+        border: 50px;
         margin-top: 10px;
-        margin-right: 10px;
+        outline: none;
+        padding: 10px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        font-size: 18px;
       }
-      
-      .big-image {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          width: 50%;
+
+      .btn:hover {
+        background-color: #ddd;
       }
-      
-      .small-image {
-        width: 200px; 
-        height: 200px;
+
+      .btn.active {
+        background-color: #666;
+        color: white;
       }
 
       h2 {
         color: black;
-        text-align: left;
+        text-align: center;
         font-size: 40px;
         margin-bottom: 10px;
       }
     </style>
-    
+
     <!-- Birthday Section 
     https://stackoverflow.com/questions/33659508/javascript-get-a-date-from-an-html-input
 		https://www.w3schools.com/js/js_whereto.asp
     https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
-    -->    
-		<script>
+    -->
+    <script>
       function logSubmit() {
         //log.textContent = `Form Submitted! Timestamp: ${event.timeStamp}`;
         //event.preventDefault();
         let date = document.getElementById("their-birthday");
-      	console.log(date)
+        console.log(date)
       }
 
       const form = document.getElementById("form");
       //const log = document.getElementById("log");
       form.addEventListener("submit", logSubmit);
-      
-      
-    	//document.getElementById("birthday-input").addEventListener("change", function() {
+
+
+      //document.getElementById("birthday-input").addEventListener("change", function() {
       //  let diff = Math.abs(date1 - date2);
       //  console.log(input); //e.g. 2015-11-13
       //  console.log(dateEntered); //e.g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
-			//});
+      //});
     </script>
-  
-  
   </head>
   <body>
 
@@ -190,13 +214,13 @@
         <div class="content">
           <p>Hello, it's a pleasure to meet you! To begin, I consider myself an artist at heart. I enjoy drawing, painting, sculpting, and writing in my free time. My artistic journey began in childhood, with my earliest canvases being the walls of my bedroom. From a young age, I always aspired to have a career that allowed me to be creative. I was the kid in kindergarten who said they wanted to be an artist when they grew up. Throughout my young years, I always debated what kind of artist I would become. I thought that one day I was going to become an artist that flew around the world painting murals. Another year, I thought I'd become like Takashi Murakami and create one design that would explode and make millions. Another time, I thought I could become an animator working with the likes of Disney or Studio Ghibli. In today's world, art is everywhere, so finding where and how my artistic abilities would fit was hard, and I'm still figuring it out since the world is constantly changing. But for now, I'm passionate about designing and creating online spaces.</p>
         </div>
-        <div class="section-container img">
+        <div class="image-container">
           <img src="IMG_3108.jpeg" alt="art1">
         </div>
       </div>
     </div>
-    
-  	<!-- Birthday Section--
+
+    <!-- Birthday Section--
 
     Code copied from: https://www.w3schools.com/js/js_validation.asp
     Author: w3schools.com
@@ -229,7 +253,7 @@
     Author: w3schools
     Description: How to retrieve/set inner text of html elements in javascript
     Date retrieved: Dec 09 2023
-		-->    
+		-->
 
 
     <div id="section1" class="section">
@@ -241,62 +265,125 @@
             <input type="date" id="inputDate" name="inputDate">
             <button type="submit">Submit</button>
           </form>
-      
+
           <p id="result"></p>
-          
+
           <script>
             document.getElementById("dateForm").addEventListener("submit", function(event) {
-                event.preventDefault(); 
+              event.preventDefault();
 
-                let input_date = new Date(document.getElementById("inputDate").value);
-                let my_birthday = new Date("2004-12-23");
+              let input_date = new Date(document.getElementById("inputDate").value);
+              let my_birthday = new Date("2004-12-23");
 
-                let difference = input_date.getTime() - my_birthday.getTime();
-                let difference_in_days = difference / (24*3600*1000);
+              let difference = input_date.getTime() - my_birthday.getTime();
+              let difference_in_days = difference / (24 * 3600 * 1000);
 
-                document.getElementById("result").innerText = `The difference in our birthdays is: ${Math.abs(Math.round(difference_in_days))} days; I was born on December 23, 2004.`;
+              document.getElementById("result").innerText = `The difference in our birthdays is: ${Math.abs(Math.round(difference_in_days))} days; I was born on December 23, 2004.`;
             });
           </script>
         </div>
       </div>
     </div>
 
-    
-    
-    <!-- Art Section -->
+    <!-- Art Section 
+		Code copied from: https://www.w3schools.com/howto/howto_js_image_grid.asp
+    Author: w3schools.com
+    Name: How TO - Image Grid
+    Description: Describes how to create an Image Grid
+    Date retrieved: Dec. 10, 2023
+		-->
+
     <div id="section2" class="section">
-      <h2 class="header">Sketchbook</h2>
+      <div class="header" id="myHeader">
+        <h2>Sketchbook</h2>
+        <div class="section-container">
+          <p>Welcome to my sketchbook! As mentioned before I love to draw! Infact, I probably have just over 20 different sketches back at home. Although I would love to show them all and my artistic journey through the ages, it would take far too long. This however, is my most recent sketchbook I’m about to finish. I started this sketch book on Monday July 4th 2022. That is not how quickly I usually complete my sketchbooks, but that is what university does to you. I experimented a lot with oil pastels in this sketchbook. I had a lot of fun layering and scratching away at them to create this amazing texture you see on the faces and in the background. I can easily say I like them far more then chalk pastels. Feel free to click on the buttons to change the different views of my sketchbook.</p>
+        </div>
+        <button class="btn" onclick="one()">1</button>
+        <button class="btn active" onclick="two()">2</button>
+      </div>
       <div class="section-container">
+        <!-- Header -->
         <div class="image-container">
-          <img src="IMG_0428.jpeg" alt="art1" class="small-image">
-          <img src="IMG_0430.jpeg" alt="art2" style="width: 200px; height: 200px;">
-          <img src="IMG_0427.jpeg" alt="art3" style="width: 200px; height: 200px;">
-          <img src="IMG_0432.jpeg" alt="art4" style="width: 200px; height: 200px;">
-          <img src="IMG_0431.jpeg" alt="art5" style="width: 200px; height: 200px;">
-          <img src="IMG_0471.jpeg" alt="art6" style="width: 200px; height: 200px;">
-          <img src="IMG_0472.jpeg" alt="art7" style="width: 200px; height: 200px;">
-          <img src="IMG_0473.jpeg" alt="art8" style="width: 200px; height: 200px;">
-          <img src="IMG_0475.jpeg" alt="art9" style="width: 200px; height: 200px;">
-          <!-- Your content for the "Art" section goes here -->
+          <div class="row">
+            <!-- First Column -->
+            <div class="column">
+              <img src="IMG_0428.jpeg" alt="art1" style="width:100%">
+              <img src="IMG_0430.jpeg" alt="art2" style="width:100%">
+              <img src="IMG_0427.jpeg" alt="art3" style="width:100%">
+              <img src="IMG_0432.jpeg" alt="art4" style="width:100%">
+              <img src="IMG_0431.jpeg" alt="art5" style="width:100%">
+            </div>
+            <!--Second Column-->
+            <div class="column">
+              <img src="IMG_0471.jpeg" alt="art6" style="width:100%">
+              <img src="IMG_0472.jpeg" alt="art7" style="width:100%">
+              <img src="IMG_0473.jpeg" alt="art8" style="width:100%">
+              <img src="IMG_0475.jpeg" alt="art9" style="width:100%">
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <script>
+      // Get the elements with class="column"
+      let elements = document.getElementsByClassName("column");
+
+      // Declare a loop variable
+      let i;
+
+      // Full-width images
+      function one() {
+        for (i = 0; i < elements.length; i++) {
+          elements[i].style.msFlex = "100%"; // IE10
+          elements[i].style.flex = "100%";
+        }
+      }
+
+  
+      // Two images side by side
+      function two() {
+        for (i = 0; i < elements.length; i++) {
+          elements[i].style.msFlex = "25%"; // IE10
+          elements[i].style.flex = "25%";
+        }
+      }
+
+      // Add active class to the current button (highlight it)
+      let header = document.getElementById("myHeader");
+      let btns = header.getElementsByClassName("btn");
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+          let current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    </script>
 
     <!-- Education Section -->
     <div id="section3" class="section">
       <h2 class="header">Education</h2>
       <div class="section-container">
         <div class="image-container">
-          <img src="IMG_0470.jpeg" alt="Education_IMG" ; style="width: 200px; height: 200px;">
+          <div class="section-container">
+            <p>
+              I am currently a second year student at the University of Waterloo, studying global business and digital arts. One fun fact about this program is that I was told about it by a co-worker. When I found out about this program, I was interested in enrolling in Arts & Business, but I am glad I made the last change.
+            </p>
+          </div>
+          <img src="IMG_0470.jpeg" alt="Education_IMG" style="width: 200px; height: 200px;">
         </div>
       </div>
     </div>
 
-    <!-- Aspirations Section -->
+    <!-- HTML -->
     <div id="section4" class="section">
       <h2 class="header">HTML</h2>
       <div class="section-container">
-        The page should include a small table describing some types of information using HTML
+        <p>
+          The page should include a small table describing some types of information using HTML.
+        </p>
       </div>
     </div>
 
